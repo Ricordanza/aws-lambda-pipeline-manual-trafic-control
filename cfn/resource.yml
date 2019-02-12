@@ -59,11 +59,11 @@ Resources:
     Properties: 
       RestApiId: !Ref RestApi
       ResourceId: !Ref Execute
-      HttpMethod: GET
+      HttpMethod: POST
       AuthorizationType: NONE
-      ApiKeyRequired: True
+      ApiKeyRequired: false
       Integration: 
-        IntegrationHttpMethod: GET
+        IntegrationHttpMethod: POST
         Type: AWS_PROXY
         Uri: !Join [ "", [ "arn:aws:apigateway:", !Ref "AWS::Region", ":lambda:path/2015-03-31/functions/", !GetAtt ExecuteLambda.Arn, "/invocations" ] ]
         IntegrationResponses:
@@ -81,7 +81,7 @@ Resources:
     Properties:
       RestApiId: !Ref RestApi
       ResourceId: !Ref Execute
-      HttpMethod: "OPTIONS"
+      HttpMethod: OPTIONS
       AuthorizationType: "NONE"
       Integration:
         RequestTemplates: 
@@ -94,7 +94,7 @@ Resources:
               application/json: ""
             ResponseParameters:
               method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
-              method.response.header.Access-Control-Allow-Methods: "'GET,OPTIONS'"
+              method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
               method.response.header.Access-Control-Allow-Origin: "'*'"
       MethodResponses:
         - StatusCode: 200
