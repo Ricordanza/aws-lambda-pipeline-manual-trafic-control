@@ -2,7 +2,7 @@ Lambda CI/CD サンプル マニュアルトラフィックコントロール
 ====
 
 ## Description
-CodePipelineを利用して CodeCommit → CodeBuild → CodeDeploy の流れでLambdaを更新するサンプル  
+CodePipelineを利用して CodeCommit → CodeBuild → Lambda実行 の流れでLambdaを更新するサンプル  
 Lambdaを単純に書き換えるだけでLambdaのバージョン管理やAPIGatewayとの間でAliasを使ったバージョン指定などは行なっていない  
 そのため、トラフィックのコントロールは実装者に委ねられる
 
